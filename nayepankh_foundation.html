@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NayePankh Foundation | Giving Wings to the Underprivileged</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { inter: ['Inter', 'sans-serif'], playfair: ['Playfair Display', 'serif'] },
+          colors: {
+            brand: { 50: '#e6f1fb', 100: '#b5d4f4', 400: '#378add', 600: '#185fa5', 900: '#042c53' },
+            green: { 50: '#e1f5ee', 400: '#1d9e75', 600: '#0f6e56' }
+          },
+          animation: { float: 'float 6s ease-in-out infinite', 'pulse-dot': 'pulse-dot 2s infinite' }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-16px)
+      }
+    }
+
+    @keyframes pulse-dot {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: .3
+      }
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card-hover {
+      transition: transform .3s, box-shadow .3s;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .12);
+    }
+
+    .dark .card-hover:hover {
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .4);
+    }
+
+    .progress-bar {
+      width: 0;
+      transition: width 1.6s ease;
+    }
+
+    .nav-blur {
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #378add;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+
+<body class="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+  <!-- ─── NAVBAR ─── -->
+  <nav
+    class="fixed top-0 left-0 right-0 z-50 nav-blur bg-white/90 dark:bg-gray-950/90 border-b border-gray-100 dark:border-gray-800">
+    <div class="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between">
+
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2">
+        <img
+          src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,fit=crop,q=95/YKbL494Mv8Ip3qgy/logo-AVLW2LLWZkI8v845.png"
+          alt="NayePankh Foundation Logo" class="h-10 w-auto object-contain"
+          onerror="this.onerror=null;this.style.display='none';document.getElementById('fallback-logo').style.display='flex'">
+        <div id="fallback-logo" style="display:none" class="flex items-center gap-2">
+          <div
+            class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-400 to-green-400 flex items-center justify-center text-white text-lg font-bold">
+            N</div>
+          <span class="font-bold text-base text-gray-900 dark:text-white">Naye<span
+              class="text-brand-400">Pankh</span></span>
+        </div>
+      </a>
+
+      <!-- Desktop Links -->
+      <ul class="hidden md:flex items-center gap-8 list-none">
+        <li><a href="#about"
+            class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-400 transition-colors">About</a>
+        </li>
+        <li><a href="#causes"
+            class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-400 transition-colors">Our
+            Work</a></li>
+        <li><a href="#impact"
+            class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-400 transition-colors">Impact</a>
+        </li>
+        <li><a href="#volunteer"
+            class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-400 transition-colors">Volunteer</a>
+        </li>
+        <li><a href="#contact"
+            class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-400 transition-colors">Contact</a>
+        </li>
+      </ul>
+
+      <!-- Right Actions -->
+      <div class="flex items-center gap-3">
+        <button id="darkToggle"
+          class="w-9 h-9 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+          aria-label="Toggle dark mode">
+          <span class="material-icons-round text-gray-600 dark:text-gray-300 text-xl" id="darkIcon">dark_mode</span>
+        </button>
+        <a href="https://nayepankh.com/donate" target="_blank"
+          class="hidden sm:inline-flex items-center gap-1 bg-brand-400 hover:bg-brand-600 text-white text-sm font-semibold px-5 py-2 rounded-full transition-colors">
+          <span class="material-icons-round text-base">favorite</span> Donate
+        </a>
+        <button id="hamburger"
+          class="md:hidden w-9 h-9 flex items-center justify-center text-gray-700 dark:text-gray-200">
+          <span class="material-icons-round" id="hamburgerIcon">menu</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu"
+    class="hidden fixed top-16 left-0 right-0 z-40 nav-blur bg-white/95 dark:bg-gray-950/95 border-b border-gray-100 dark:border-gray-800 flex-col p-5 gap-4">
+    <a href="#about" class="text-sm font-medium text-gray-700 dark:text-gray-200 flex items-center gap-2"
+      onclick="closeMobile()"><span class="material-icons-round text-brand-400 text-base">info</span>About</a>
+    <a href="#causes" class="text-sm font-medium text-gray-700 dark:text-gray-200 flex items-center gap-2"
+      onclick="closeMobile()"><span class="material-icons-round text-brand-400 text-base">volunteer_activism</span>Our
+      Work</a>
+    <a href="#impact" class="text-sm font-medium text-gray-700 dark:text-gray-200 flex items-center gap-2"
+      onclick="closeMobile()"><span class="material-icons-round text-brand-400 text-base">bar_chart</span>Impact</a>
+    <a href="#volunteer" class="text-sm font-medium text-gray-700 dark:text-gray-200 flex items-center gap-2"
+      onclick="closeMobile()"><span class="material-icons-round text-brand-400 text-base">group_add</span>Volunteer</a>
+    <a href="#contact" class="text-sm font-medium text-gray-700 dark:text-gray-200 flex items-center gap-2"
+      onclick="closeMobile()"><span class="material-icons-round text-brand-400 text-base">mail</span>Contact</a>
+  </div>
+
+  <!-- ─── HERO ─── -->
+  <section class="relative min-h-screen flex items-center pt-20 pb-16 overflow-hidden" id="home">
+    <!-- Background image -->
+    <div class="absolute inset-0 z-0">
+      <img
+        src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1920,fit=crop/YKbL494Mv8Ip3qgy/whatsapp-image-2023-01-31-at-9.40.45-pm-dWxpDb2pNbCaxERZ.jpeg"
+        alt="NayePankh volunteers" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-r from-gray-950/85 via-gray-950/60 to-gray-950/20"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-5 w-full">
+      <div class="max-w-2xl fade-up visible">
+        <!-- Badge -->
+        <div
+          class="inline-flex items-center gap-2 bg-green-400/20 border border-green-400/40 text-green-400 text-xs font-bold px-4 py-2 rounded-full mb-6 uppercase tracking-widest">
+          <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+          UP Govt. Registered NGO • 80G & 12A Certified
+        </div>
+
+        <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-6">
+          Giving <span class="text-brand-400">Wings</span> to the Underprivileged
+        </h1>
+
+        <p class="text-lg text-gray-300 mb-10 max-w-xl leading-relaxed">
+          NayePankh Foundation uplift underprivileged communities through food, education, sanitary napkins, and
+          clothing drives — because every person deserves a chance to fly.
+        </p>
+
+        <div class="flex flex-wrap gap-4 mb-14">
+          <a href="#causes"
+            class="inline-flex items-center gap-2 bg-brand-400 hover:bg-brand-600 text-white font-bold px-8 py-4 rounded-full text-base transition-all hover:-translate-y-1 hover:shadow-xl">
+            <span class="material-icons-round text-xl">explore</span> Explore Our Work
+          </a>
+          <a href="#volunteer"
+            class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold px-8 py-4 rounded-full text-base transition-all hover:-translate-y-1">
+            <span class="material-icons-round text-xl">group_add</span> Become a Volunteer
+          </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="flex flex-wrap gap-10">
+          <div>
+            <div class="text-4xl font-extrabold text-white" data-target="200000">0</div>
+            <div class="text-sm text-gray-400 mt-1 flex items-center gap-1"><span
+                class="material-icons-round text-brand-400 text-sm">people</span>Lives Impacted</div>
+          </div>
+          <div>
+            <div class="text-4xl font-extrabold text-white" data-target="30000">0</div>
+            <div class="text-sm text-gray-400 mt-1 flex items-center gap-1"><span
+                class="material-icons-round text-brand-400 text-sm">school</span>Interns Trained</div>
+          </div>
+          <div>
+            <div class="text-4xl font-extrabold text-white" data-target="15">0</div>
+            <div class="text-sm text-gray-400 mt-1 flex items-center gap-1"><span
+                class="material-icons-round text-brand-400 text-sm">location_city</span>Cities Active</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div
+      class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-white/50 animate-bounce">
+      <span class="material-icons-round text-2xl">expand_more</span>
+    </div>
+  </section>
+
+  <!-- ─── ABOUT ─── -->
+  <section class="py-24 bg-gray-50 dark:bg-gray-900" id="about">
+    <div class="max-w-7xl mx-auto px-5 grid md:grid-cols-2 gap-16 items-center">
+
+      <!-- Text -->
+      <div class="fade-up">
+        <span class="text-xs font-bold uppercase tracking-widest text-green-400 mb-3 block">About Us</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-6 leading-tight">Born During
+          Crisis,<br>Built for Change</h2>
+        <p class="text-gray-600 dark:text-gray-300 text-base leading-relaxed mb-4">
+          NayePankh Foundation was born during the COVID-19 pandemic to serve the most vulnerable. Since then, we have
+          grown into one of India's largest student-led NGOs — registered under UP Government, 80G & 12A certified, and
+          affiliated with Niti Aayog.
+        </p>
+        <p class="text-gray-600 dark:text-gray-300 text-base leading-relaxed mb-8">
+          Featured in <strong>The Pioneer, Dainik Jagran, Hindustan</strong> and more — our work has touched over 2 lakh
+          lives. Service to mankind is service to God.
+        </p>
+        <blockquote class="border-l-4 border-brand-400 pl-5 py-2 mb-8">
+          <p class="text-gray-700 dark:text-gray-300 italic text-base">"If we all do something, then together there is
+            no problem that we cannot solve!"</p>
+          <cite class="text-sm text-gray-500 dark:text-gray-400 mt-2 block not-italic font-semibold">— Prashant Shukla,
+            Founder & President</cite>
+        </blockquote>
+        <div class="grid grid-cols-2 gap-4">
+          <div
+            class="bg-white dark:bg-gray-800 rounded-2xl p-4 border border-gray-100 dark:border-gray-700 flex items-center gap-3">
+            <span class="material-icons-round text-brand-400 text-3xl">verified</span>
+            <div>
+              <div class="font-bold text-sm text-gray-900 dark:text-white">Govt. Registered</div>
+              <div class="text-xs text-gray-500">UP Govt & Niti Aayog</div>
+            </div>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 rounded-2xl p-4 border border-gray-100 dark:border-gray-700 flex items-center gap-3">
+            <span class="material-icons-round text-green-400 text-3xl">groups</span>
+            <div>
+              <div class="font-bold text-sm text-gray-900 dark:text-white">Student-Led</div>
+              <div class="text-xs text-gray-500">Largest in India</div>
+            </div>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 rounded-2xl p-4 border border-gray-100 dark:border-gray-700 flex items-center gap-3">
+            <span class="material-icons-round text-brand-400 text-3xl">receipt_long</span>
+            <div>
+              <div class="font-bold text-sm text-gray-900 dark:text-white">80G Certified</div>
+              <div class="text-xs text-gray-500">Tax-exempted donations</div>
+            </div>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 rounded-2xl p-4 border border-gray-100 dark:border-gray-700 flex items-center gap-3">
+            <span class="material-icons-round text-green-400 text-3xl">newspaper</span>
+            <div>
+              <div class="font-bold text-sm text-gray-900 dark:text-white">Media Featured</div>
+              <div class="text-xs text-gray-500">Dainik Jagran & more</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Image -->
+      <div class="fade-up relative">
+        <img
+          src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=1045,fit=crop/YKbL494Mv8Ip3qgy/whatsapp-image-2023-02-05-at-9.13.03-am-YBgL64ZLPPI03WXe.jpeg"
+          alt="NayePankh Foundation volunteer activity" class="w-full rounded-3xl object-cover shadow-2xl"
+          style="max-height:560px">
+        <div class="absolute -bottom-6 -left-6 bg-brand-400 text-white rounded-2xl px-6 py-4 shadow-xl">
+          <div class="text-3xl font-extrabold">2L+</div>
+          <div class="text-sm opacity-80">Lives Changed</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CAUSES ─── -->
+  <section class="py-24 bg-white dark:bg-gray-950" id="causes">
+    <div class="max-w-7xl mx-auto px-5">
+      <div class="text-center mb-14 fade-up">
+        <span class="text-xs font-bold uppercase tracking-widest text-brand-400 mb-3 block">Our Work</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">Every Cause Matters</h2>
+        <p class="text-gray-500 dark:text-gray-400 max-w-xl mx-auto">From meals to menstrual hygiene — we tackle the
+          daily struggles faced by India's most vulnerable communities.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Food -->
+        <div
+          class="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-800 card-hover fade-up">
+          <div class="h-44 overflow-hidden">
+            <img
+              src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1920,fit=crop/YKbL494Mv8Ip3qgy/whatsapp-image-2023-02-05-at-9.13.05-am-AzGEo7LOeZi2gn9v.jpeg"
+              alt="Food distribution"
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="material-icons-round text-amber-500">restaurant</span>
+              <h3 class="font-bold text-gray-900 dark:text-white text-base">Fighting Hunger</h3>
+            </div>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mb-4 leading-relaxed">We distribute nutritious food to
+              underprivileged families and stray animals, ensuring no one sleeps hungry.</p>
+            <div class="h-1.5 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
+              <div class="progress-bar h-full bg-gradient-to-r from-brand-400 to-green-400 rounded-full"
+                data-width="78"></div>
+            </div>
+            <div class="flex justify-between mt-2 text-xs text-gray-400">
+              <span>₹2.3L raised</span><span class="font-semibold text-brand-400">78%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div
+          class="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-800 card-hover fade-up">
+          <div class="h-44 overflow-hidden">
+            <img
+              src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=963,fit=crop/YKbL494Mv8Ip3qgy/1-YD0yJ4erqEIN3ZWV.jpeg"
+              alt="Education initiative"
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="material-icons-round text-brand-400">menu_book</span>
+              <h3 class="font-bold text-gray-900 dark:text-white text-base">Education for All</h3>
+            </div>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mb-4 leading-relaxed">Free education and skill
+              development for underprivileged children and youth across India through internship programs.</p>
+            <div class="h-1.5 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
+              <div class="progress-bar h-full bg-gradient-to-r from-brand-400 to-green-400 rounded-full"
+                data-width="65"></div>
+            </div>
+            <div class="flex justify-between mt-2 text-xs text-gray-400">
+              <span>₹1.8L raised</span><span class="font-semibold text-brand-400">65%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hygiene -->
+        <div
+          class="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-800 card-hover fade-up">
+          <div class="h-44 overflow-hidden">
+            <img
+              src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1920,fit=crop/YKbL494Mv8Ip3qgy/whatsapp-image-2023-02-15-at-9.17.30-pm-AVLPXr08jETq2nyv.jpeg"
+              alt="Hygiene awareness campaign"
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="material-icons-round text-pink-500">health_and_safety</span>
+              <h3 class="font-bold text-gray-900 dark:text-white text-base">Menstrual Hygiene</h3>
+            </div>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mb-4 leading-relaxed">We distribute sanitary pads and
+              conduct awareness campaigns to break the stigma around menstruation.</p>
+            <div class="h-1.5 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
+              <div class="progress-bar h-full bg-gradient-to-r from-brand-400 to-green-400 rounded-full"
+                data-width="90"></div>
+            </div>
+            <div class="flex justify-between mt-2 text-xs text-gray-400">
+              <span>₹3.1L raised</span><span class="font-semibold text-brand-400">90%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Clothes -->
+        <div
+          class="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-800 card-hover fade-up">
+          <div class="h-44 overflow-hidden">
+            <img
+              src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1920,fit=crop/YKbL494Mv8Ip3qgy/nyomtatott-184780375-AVLW214Gz2IpXNn4.jpg"
+              alt="Clothing drive" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="material-icons-round text-green-400">checkroom</span>
+              <h3 class="font-bold text-gray-900 dark:text-white text-base">Clothing Drives</h3>
+            </div>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mb-4 leading-relaxed">We collect and distribute clothing
+              to poor families, especially during harsh winters, across multiple states.</p>
+            <div class="h-1.5 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
+              <div class="progress-bar h-full bg-gradient-to-r from-brand-400 to-green-400 rounded-full"
+                data-width="55"></div>
+            </div>
+            <div class="flex justify-between mt-2 text-xs text-gray-400">
+              <span>₹1.2L raised</span><span class="font-semibold text-brand-400">55%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── IMPACT ─── -->
+  <section class="py-24 bg-gray-50 dark:bg-gray-900" id="impact">
+    <div class="max-w-7xl mx-auto px-5">
+      <div class="text-center mb-14 fade-up">
+        <span class="text-xs font-bold uppercase tracking-widest text-green-400 mb-3 block">Our Impact</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">Numbers That Inspire</h2>
+        <p class="text-gray-500 dark:text-gray-400 max-w-xl mx-auto">Every number here is a real human life touched by
+          kindness and compassion.</p>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-5 gap-5">
+        <div
+          class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center border border-gray-100 dark:border-gray-700 card-hover fade-up">
+          <span class="material-icons-round text-brand-400 text-4xl mb-3">favorite</span>
+          <div class="text-3xl font-extrabold text-gray-900 dark:text-white">2L+</div>
+          <div class="text-sm text-gray-500 dark:text-gray-400 mt-1">People Helped</div>
+        </div>
+        <div
+          class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center border border-gray-100 dark:border-gray-700 card-hover fade-up">
+          <span class="material-icons-round text-green-400 text-4xl mb-3">school</span>
+          <div class="text-3xl font-extrabold text-gray-900 dark:text-white">30K+</div>
+          <div class="text-sm text-gray-500 dark:text-gray-400 mt-1">Interns Trained</div>
+        </div>
+        <div
+          class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center border border-gray-100 dark:border-gray-700 card-hover fade-up">
+          <span class="material-icons-round text-amber-500 text-4xl mb-3">restaurant</span>
+          <div class="text-3xl font-extrabold text-gray-900 dark:text-white">50K+</div>
+          <div class="text-sm text-gray-500 dark:text-gray-400 mt-1">Meals Distributed</div>
+        </div>
+        <div
+          class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center border border-gray-100 dark:border-gray-700 card-hover fade-up">
+          <span class="material-icons-round text-pink-500 text-4xl mb-3">health_and_safety</span>
+          <div class="text-3xl font-extrabold text-gray-900 dark:text-white">25K+</div>
+          <div class="text-sm text-gray-500 dark:text-gray-400 mt-1">Sanitary Pads Given</div>
+        </div>
+        <div
+          class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center border border-gray-100 dark:border-gray-700 card-hover fade-up col-span-2 lg:col-span-1">
+          <span class="material-icons-round text-brand-400 text-4xl mb-3">location_city</span>
+          <div class="text-3xl font-extrabold text-gray-900 dark:text-white">15+</div>
+          <div class="text-sm text-gray-500 dark:text-gray-400 mt-1">Cities Active</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── HOW IT WORKS ─── -->
+  <section class="py-24 bg-white dark:bg-gray-950">
+    <div class="max-w-7xl mx-auto px-5">
+      <div class="text-center mb-14 fade-up">
+        <span class="text-xs font-bold uppercase tracking-widest text-brand-400 mb-3 block">How It Works</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white">Your Support in 4 Steps</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center fade-up">
+          <div
+            class="w-16 h-16 rounded-2xl bg-brand-50 dark:bg-brand-900/30 flex items-center justify-center mx-auto mb-5">
+            <span class="material-icons-round text-brand-400 text-3xl">volunteer_activism</span>
+          </div>
+          <div class="text-xs font-bold text-brand-400 mb-2 uppercase tracking-widest">Step 01</div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-base mb-2">Choose a Cause</h4>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Pick from food, education, hygiene, or clothing drives
+            that resonate with you.</p>
+        </div>
+        <div class="text-center fade-up">
+          <div
+            class="w-16 h-16 rounded-2xl bg-green-50 dark:bg-green-900/20 flex items-center justify-center mx-auto mb-5">
+            <span class="material-icons-round text-green-400 text-3xl">payments</span>
+          </div>
+          <div class="text-xs font-bold text-green-400 mb-2 uppercase tracking-widest">Step 02</div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-base mb-2">Donate or Volunteer</h4>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Contribute money or your time — every bit counts and makes
+            a difference.</p>
+        </div>
+        <div class="text-center fade-up">
+          <div
+            class="w-16 h-16 rounded-2xl bg-brand-50 dark:bg-brand-900/30 flex items-center justify-center mx-auto mb-5">
+            <span class="material-icons-round text-brand-400 text-3xl">rocket_launch</span>
+          </div>
+          <div class="text-xs font-bold text-brand-400 mb-2 uppercase tracking-widest">Step 03</div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-base mb-2">We Take Action</h4>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Our ground teams deliver aid directly to communities in
+            need.</p>
+        </div>
+        <div class="text-center fade-up">
+          <div
+            class="w-16 h-16 rounded-2xl bg-green-50 dark:bg-green-900/20 flex items-center justify-center mx-auto mb-5">
+            <span class="material-icons-round text-green-400 text-3xl">auto_awesome</span>
+          </div>
+          <div class="text-xs font-bold text-green-400 mb-2 uppercase tracking-widest">Step 04</div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-base mb-2">Lives Change</h4>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Underprivileged families receive the support and dignity
+            they deserve.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── VOLUNTEER CTA ─── -->
+  <section class="py-0 px-5" id="volunteer">
+    <div class="max-w-7xl mx-auto">
+      <div class="relative rounded-3xl overflow-hidden">
+        <img
+          src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1920,fit=crop/YKbL494Mv8Ip3qgy/whatsapp-image-2023-02-05-at-9.13.05-am-AzGEo7LOeZi2gn9v.jpeg"
+          alt="Volunteers" class="w-full h-72 object-cover">
+        <div class="absolute inset-0 bg-brand-600/90 flex flex-col items-center justify-center text-center px-8">
+          <span class="text-xs font-bold uppercase tracking-widest text-white/70 mb-3">Join Us</span>
+          <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-4">Ready to Make a Difference?</h2>
+          <p class="text-white/80 mb-8 max-w-lg">Whether you are a student, professional, or simply someone with a heart
+            to help — NayePankh has a place for you.</p>
+          <div class="flex flex-wrap gap-4 justify-center">
+            <a href="#contact"
+              class="inline-flex items-center gap-2 bg-white text-brand-600 font-bold px-8 py-3.5 rounded-full hover:-translate-y-1 transition-transform">
+              <span class="material-icons-round">group_add</span> Become a Volunteer
+            </a>
+            <a href="https://nayepankh.com/donate" target="_blank"
+              class="inline-flex items-center gap-2 bg-white/10 border border-white/40 text-white font-bold px-8 py-3.5 rounded-full hover:-translate-y-1 transition-transform">
+              <span class="material-icons-round">favorite</span> Donate Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT ─── -->
+  <section class="py-24 bg-gray-50 dark:bg-gray-900" id="contact">
+    <div class="max-w-7xl mx-auto px-5">
+      <div class="text-center mb-14 fade-up">
+        <span class="text-xs font-bold uppercase tracking-widest text-green-400 mb-3 block">Get Involved</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">Reach Out to Us</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12 items-start">
+        <!-- Info -->
+        <div class="fade-up">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Let's Connect</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-8">Have questions, want to donate, or looking to volunteer? We
+            would love to hear from you.</p>
+
+          <div class="space-y-4">
+            <div
+              class="flex items-center gap-4 bg-white dark:bg-gray-800 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
+              <div
+                class="w-11 h-11 rounded-xl bg-brand-50 dark:bg-brand-900/30 flex items-center justify-center flex-shrink-0">
+                <span class="material-icons-round text-brand-400">email</span>
+              </div>
+              <div>
+                <div class="text-xs text-gray-400 mb-0.5">Email</div>
+                <div class="text-sm font-semibold text-gray-900 dark:text-white">contact@nayepankh.com</div>
+              </div>
+            </div>
+            <div
+              class="flex items-center gap-4 bg-white dark:bg-gray-800 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
+              <div
+                class="w-11 h-11 rounded-xl bg-green-50 dark:bg-green-900/20 flex items-center justify-center flex-shrink-0">
+                <span class="material-icons-round text-green-400">phone</span>
+              </div>
+              <div>
+                <div class="text-xs text-gray-400 mb-0.5">Phone</div>
+                <div class="text-sm font-semibold text-gray-900 dark:text-white">+91 83185 00748</div>
+              </div>
+            </div>
+            <div
+              class="flex items-center gap-4 bg-white dark:bg-gray-800 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
+              <div
+                class="w-11 h-11 rounded-xl bg-brand-50 dark:bg-brand-900/30 flex items-center justify-center flex-shrink-0">
+                <span class="material-icons-round text-brand-400">location_on</span>
+              </div>
+            </div>
+            <div
+              class="flex items-center gap-4 bg-white dark:bg-gray-800 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
+              <div
+                class="w-11 h-11 rounded-xl bg-green-50 dark:bg-green-900/20 flex items-center justify-center flex-shrink-0">
+                <span class="material-icons-round text-green-400">language</span>
+              </div>
+              <div>
+                <div class="text-xs text-gray-400 mb-0.5">Website</div><a href="https://nayepankh.com" target="_blank"
+                  class="text-sm font-semibold text-brand-400 hover:underline">nayepankh.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-100 dark:border-gray-700 fade-up">
+          <div class="grid grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1.5">First Name</label>
+              <input type="text" placeholder="Rahul"
+                class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white text-sm outline-none focus:border-brand-400 transition-colors">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1.5">Last Name</label>
+              <input type="text" placeholder="Sharma"
+                class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white text-sm outline-none focus:border-brand-400 transition-colors">
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1.5">Email Address</label>
+            <input type="email" placeholder="rahul@email.com"
+              class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white text-sm outline-none focus:border-brand-400 transition-colors">
+          </div>
+          <div class="mb-4">
+            <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1.5">I Want To</label>
+            <select
+              class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white text-sm outline-none focus:border-brand-400 transition-colors">
+              <option>Volunteer</option>
+              <option>Donate</option>
+              <option>Apply for Internship</option>
+              <option>Partner with NayePankh</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="mb-6">
+            <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1.5">Message</label>
+            <textarea rows="4" placeholder="Tell us how you'd like to help..."
+              class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white text-sm outline-none focus:border-brand-400 transition-colors resize-none"></textarea>
+          </div>
+          <button onclick="handleSubmit()"
+            class="w-full bg-brand-400 hover:bg-brand-600 text-white font-bold py-3.5 rounded-xl transition-colors flex items-center justify-center gap-2">
+            <span class="material-icons-round">send</span> Send Message
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="bg-gray-900 dark:bg-gray-950 text-gray-300 py-16 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div>
+          <img
+            src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,fit=crop,q=95/YKbL494Mv8Ip3qgy/logo-AVLW2LLWZkI8v845.png"
+            alt="NayePankh Foundation" class="h-12 w-auto object-contain mb-4 brightness-200"
+            onerror="this.style.display='none'">
+          <p class="text-sm text-gray-400 leading-relaxed mb-5">A UP Govt. registered NGO dedicated to uplifting
+            underprivileged communities through food, education, and healthcare.</p>
+          <div class="flex gap-3">
+            <a href="https://www.facebook.com/nayepankhfoundation" target="_blank"
+              class="w-9 h-9 rounded-lg bg-gray-800 hover:bg-brand-400 flex items-center justify-center transition-colors"
+              aria-label="Facebook">
+              <span class="material-icons-round text-sm">facebook</span>
+            </a>
+            <a href="https://www.instagram.com/nayepankhfoundation" target="_blank"
+              class="w-9 h-9 rounded-lg bg-gray-800 hover:bg-brand-400 flex items-center justify-center transition-colors"
+              aria-label="Instagram">
+              <span class="material-icons-round text-sm">photo_camera</span>
+            </a>
+            <a href="https://www.linkedin.com/company/nayepankh" target="_blank"
+              class="w-9 h-9 rounded-lg bg-gray-800 hover:bg-brand-400 flex items-center justify-center transition-colors"
+              aria-label="LinkedIn">
+              <span class="material-icons-round text-sm">work</span>
+            </a>
+            <a href="https://www.youtube.com/@nayepankhfoundation" target="_blank"
+              class="w-9 h-9 rounded-lg bg-gray-800 hover:bg-brand-400 flex items-center justify-center transition-colors"
+              aria-label="YouTube">
+              <span class="material-icons-round text-sm">play_circle</span>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h5 class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-5">Organisation</h5>
+          <ul class="space-y-3">
+            <li><a href="#about" class="text-sm hover:text-brand-400 transition-colors flex items-center gap-2"><span
+                  class="material-icons-round text-xs text-gray-600">arrow_forward_ios</span>About Us</a></li>
+            <li><a href="#causes" class="text-sm hover:text-brand-400 transition-colors flex items-center gap-2"><span
+                  class="material-icons-round text-xs text-gray-600">arrow_forward_ios</span>Our Work</a></li>
+            <li><a href="#impact" class="text-sm hover:text-brand-400 transition-colors flex items-center gap-2"><span
+                  class="material-icons-round text-xs text-gray-600">arrow_forward_ios</span>Impact</a></li>
+            <li><a href="https://nayepankh.com/our-certificates" target="_blank"
+                class="text-sm hover:text-brand-400 transition-colors flex items-center gap-2"><span
+                  class="material-icons-round text-xs text-gray-600">arrow_forward_ios</span>Our Certificates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-5">Get Involved</h5>
+          <ul class="space-y-3">
+            <li><a href="#volunteer"
+                class="text-sm hover:text-brand-400 transition-colors flex items-center gap-2"><span
+                  class="material-icons-round text-xs text-gray-600">arrow_forward_ios</span>Volunteer</a></li>
+            <li><a href="https://internshala.com/company/nayepankh-foundation-1664433378/" target="_blank"
+                class="text-sm hover:text-brand-400 transition-colors flex items-center gap-2"><span
+                  class="material-icons-round text-xs text-gray-600">arrow_forward_ios</span>Internships</a></li>
+            <li><a href="https://nayepankh.com/donate" target="_blank"
+                class="text-sm hover:text-brand-400 transition-colors flex items-center gap-2"><span
+                  class="material-icons-round text-xs text-gray-600">arrow_forward_ios</span>Donate</a></li>
+            <li><a href="#contact" class="text-sm hover:text-brand-400 transition-colors flex items-center gap-2"><span
+                  class="material-icons-round text-xs text-gray-600">arrow_forward_ios</span>Partner with Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-5">Contact</h5>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-2 text-sm"><span
+                class="material-icons-round text-brand-400 text-base">email</span>contact@nayepankh.com</li>
+            <li class="flex items-center gap-2 text-sm"><span
+                class="material-icons-round text-brand-400 text-base">phone</span>+91 83185 00748</li>
+            <li><a href="https://nayepankh.com" target="_blank"
+                class="flex items-center gap-2 text-sm hover:text-brand-400 transition-colors"><span
+                  class="material-icons-round text-brand-400 text-base">language</span>nayepankh.com</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-xs text-gray-500">© 2024 NayePankh Foundation. All rights reserved. | Registered under Indian
+          Society Act, 1860</p>
+        <div class="flex gap-4 text-xs text-gray-500">
+          <a href="https://nayepankh.com/privacy-policy" target="_blank" class="hover:text-brand-400">Privacy Policy</a>
+          <a href="https://nayepankh.com/terms-and-conditions" target="_blank" class="hover:text-brand-400">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Dark mode
+    const darkToggle = document.getElementById('darkToggle');
+    const darkIcon = document.getElementById('darkIcon');
+    const html = document.documentElement;
+    const saved = localStorage.getItem('npTheme') || 'light';
+    if (saved === 'dark') { html.classList.add('dark'); darkIcon.textContent = 'light_mode'; }
+
+    darkToggle.addEventListener('click', () => {
+      const isDark = html.classList.toggle('dark');
+      darkIcon.textContent = isDark ? 'light_mode' : 'dark_mode';
+      localStorage.setItem('npTheme', isDark ? 'dark' : 'light');
+    });
+
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const hamburgerIcon = document.getElementById('hamburgerIcon');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('hidden');
+      mobileMenu.classList.toggle('flex', !open);
+      hamburgerIcon.textContent = open ? 'menu' : 'close';
+    });
+    function closeMobile() {
+      mobileMenu.classList.add('hidden');
+      mobileMenu.classList.remove('flex');
+      hamburgerIcon.textContent = 'menu';
+    }
+
+    // Intersection Observer for fade-up
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 100);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Counter animation
+    function animateCount(el, target) {
+      let start = 0;
+      const dur = 1800, step = 16;
+      const inc = target / (dur / step);
+      const timer = setInterval(() => {
+        start += inc;
+        if (start >= target) { start = target; clearInterval(timer); }
+        const val = Math.round(start);
+        el.textContent = val >= 100000 ? Math.round(val / 100000) + 'L+' : val >= 1000 ? Math.round(val / 1000) + 'K+' : val + '+';
+      }, step);
+    }
+    const statObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          animateCount(e.target, parseInt(e.target.dataset.target));
+          statObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-target]').forEach(el => statObs.observe(el));
+
+    // Progress bars
+    const pbObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          setTimeout(() => { e.target.style.width = e.target.dataset.width + '%'; }, 200);
+          pbObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('.progress-bar').forEach(el => pbObs.observe(el));
+
+    function handleSubmit() {
+      const btn = event.target;
+      btn.innerHTML = '<span class="material-icons-round animate-spin">autorenew</span> Sending...';
+      setTimeout(() => {
+        btn.innerHTML = '<span class="material-icons-round">check_circle</span> Message Sent!';
+        btn.classList.replace('bg-brand-400', 'bg-green-500');
+      }, 1500);
+    }
+  </script>
+</body>
+
+</html>
